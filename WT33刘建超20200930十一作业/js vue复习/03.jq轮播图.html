@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            position: relative;
+            width: 300px;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .banner {
+            position: absolute;
+            width: 900px;
+            left: 0;
+            top: 0;
+        }
+
+        .banner li {
+            width: 300px;
+            float: left;
+        }
+
+        .banner li img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="banner">
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        var page = -1;
+        var start = true;
+        function banner() {
+            if (start) {
+                page++;
+                if (page == 3) {
+                    page = 0;
+                }
+                $('.banner').animate({
+                    left: -page * 300
+                }, 500)
+            }
+            //2s后再执行
+            setTimeout(banner, 2000)
+        }
+        banner()
+        $('.wrap').hover(function () {
+            start = false;
+        }, function () {
+            start = true;
+        })
+    </script>
+</body>
+
+</html>

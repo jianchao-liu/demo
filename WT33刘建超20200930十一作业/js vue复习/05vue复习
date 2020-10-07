@@ -1,0 +1,86 @@
+1.对于MVVM的理解？
+概述：MVVM是前端视图分层的开发思想，其理念是将页面分为M、V、VM，VM作为调度者沟通M和V
+M：数据层，处理对数据的CRUD（增删改查）
+V：视图层，显示内容的部分
+核心思想：在数据和视图之间提供一个中间人（VM），通过VM实现数据和视图之间的同步
+
+2.vue生命周期有哪些？
+beforeCreat() 创建前
+created（）创建
+beforeMount()挂载前
+mounted（）挂载
+beforeupdate（）更改前
+updated（）更改
+beforeDestroy()销毁前
+destroyed（）销毁
+
+3.vue如何定义一个过滤器？写出关键代码
+过滤器定义在filiters，每个过滤器就是一个有返回值的函数
+formatFn:(val,item)=>{
+    if(item.age>21){
+        return val+'岁'
+    }else{
+        return '    岁数:'+val
+    }
+}
+
+4.computed和methods和watch的区别
+computed是计算属性,用属性语法调用显示 属性名
+methods 方法，用方法的语法调用 函数名（）
+computed有缓存功能，页面中数据没有发生变化时，不会重新计算
+侦听属性watch：监听函数接收的两个参数，第一个参数是最新的值；第二个参数是之前输入的值
+
+5.vue常用的修饰符？
+stop - 调用 event.stopPropagation()。
+prevent - 调用 event.preventDefault()。
+self - 只当事件是从侦听器绑定的元素本身触发时才触发回调。
+{keyCode | keyAlias} - 只当事件是从特定键触发时才触发回调。
+once - 只触发一次回调。
+
+6.怎么定义vue-router的动态路由以及如何获取传过来的参数？
+在APP.vue中
+    <router-link :to="'/user/'+userId" replace>用户</router-link>    
+ 
+在index.js
+{ 
+    path:'/mine',
+    name:'mine',
+    component:()=>import('@/pages/Mine/mine')
+  } 
+     通过$route.query 获取传递的值
+
+7.vue中引入组件的步骤？
+先使用import导入你要在该组件中使用的子组件
+import Item from "./Item";
+在components 注册这个组件
+components: {
+    Item,
+  },
+  在html中引用这个组件
+  <Item></Item>
+
+8.vue单页面的应用及其优缺点
+优点：数据驱动、组件化、轻量、简洁
+缺点：不支持低版本的浏览器，最低只支持到IE9；
+第一次加载首页耗时相对长一些；
+不可以使用浏览器的导航按钮需要自行实现前进、后退。
+不利于seo
+
+9.vue中key值的作用
+key的作用主要是为了高效的更新虚拟DOM
+
+10.对keep-alive的了解？
+keep-alive是Vue的内置组件，能在组件切换过程中将状态保留在内存中，防止重复渲染DOM。
+keep-alive生命周期钩子函数：activated、deactivated
+activated：在组件被激活时调用，在组件第一次渲染时也会被调用，之后每次keep-alive激活时被调用。
+deactivated：在组件被停用时调用。
+当引入keep-alive 的时候，页面第一次进入，钩子的触发顺序created-> mounted-> activated，退出时触发deactivated。
+当再次进入（前进或者后退）时，只触发activated。
+
+
+自我介绍
+你好,我叫刘建超，来自深圳，大学学的是计算机网络技术，我是一个比较稳重、谨慎的人，具有
+积极向上的心态，在学校时和同学老师的关系良好，并且有很强的责任心。
+我来这里面试这份工作呢，一是我比较喜欢这个职业，因为我觉得学习前端可以让我学到更多的知识，
+并且可以多一项生存技能，我相信我能够做好这份工作，发挥自己的优势和价值，
+并且对这份工作认真对待，希望公司可以给我这次机会。

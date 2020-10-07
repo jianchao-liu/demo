@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav {
+            width: 400px;
+            height: 150px;
+            margin: 10px;
+        }
+
+        .nav ul li {
+            width: 100px;
+            float: left;
+        }
+
+        .nav ul li ul {
+            display: none;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <ul>
+            <li class="row"><a href="#">栏目一</a>
+                <ul>
+                    <li><a href="#">二级栏目1</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var row = document.getElementsByClassName("row");
+        var length = row.length;
+        for (var i = 0; i < length; i++) {
+            row[i].onmouseover = function (i) {
+                var that = row[i];
+                return function (i) {
+                    child = that.childNodes;
+                    child[2].style.display = "block";
+                }
+            }(i);
+            row[i].onmouseout = function (i) {
+                var that = row[i];
+                return function (i) {
+                    child = that.childNodes;
+                    child[2].style.display = "none";
+                }
+            }(i);
+        }
+        console.log(row);
+    </script>
+</body>
+
+</html>
